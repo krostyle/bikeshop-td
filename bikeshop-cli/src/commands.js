@@ -1,7 +1,7 @@
 const { prompt } = require('inquirer');
 const { validateNumbers } = require('./helpers/validations');
 const { readFile } = require('./controllers/database.controllers');
-const { createMessageForCustomer, getCustomer, customerExists } = require('./controllers/system.controllers');
+const { createMessageForCustomer, getCustomer, getMessageForCustomer } = require('./controllers/system.controllers');
 
 const main = async() => {
     await readFile();
@@ -28,8 +28,10 @@ const main = async() => {
     const customer = await getCustomer(cliente);
     if (customer) {
         createMessageForCustomer(true, customer.fullName, monto, descuento);
+        getMessageForCustomer(customer.fullName);
     } else {
         createMessageForCustomer(false, cliente, monto, descuento);
+        getMessageForCustomer(cliente);
     }
 }
 

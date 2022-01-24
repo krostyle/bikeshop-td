@@ -29,8 +29,16 @@ const createMessageForCustomer = (exist, cliente, monto, descuento) => {
     fs.writeFileSync(path.join(reportsPath, `${cliente}.txt`), message);
 }
 
+const getMessageForCustomer = async(cliente) => {
+    fs.readFile(path.join(reportsPath, `${cliente}.txt`), 'utf8', (err, data) => {
+        if (err) throw err;
+        console.log(data);
+    });
+}
+
 
 module.exports = {
     getCustomer,
-    createMessageForCustomer
+    createMessageForCustomer,
+    getMessageForCustomer
 }

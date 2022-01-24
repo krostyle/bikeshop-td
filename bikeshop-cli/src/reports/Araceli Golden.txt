@@ -1,4 +1,4 @@
  Cliente: Araceli Golden
-        Su compra es de  100 pesos
-        porcentaje de descuento 10 da un total de: $ 90;
+        Su compra es de  500 pesos
+        porcentaje de descuento 50 da un total de: $ 250;
         
