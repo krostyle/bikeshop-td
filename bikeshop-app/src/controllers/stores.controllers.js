@@ -12,6 +12,7 @@ const getStores = async(req, res) => {
     }
 }
 
+
 module.exports = {
     getStores
 };
