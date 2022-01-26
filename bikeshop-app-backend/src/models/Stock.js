@@ -1,17 +1,19 @@
 const { Sequelize } = require('sequelize');
 const sequelize = require('../database/database');
 const Product = require('./Product');
-
-const Category = sequelize.define('category', {
-    category_id: {
+const Stock = sequelize.define('stock', {
+    store_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
     },
-    category_name: {
-        type: Sequelize.STRING,
-    }
+    product_id: {
+        type: Sequelize.INTEGER,
+    },
+    quantity: {
+        type: Sequelize.INTEGER,
+    },
 }, {
     timestamps: false,
 });
-Category.hasMany(Product, { foreignKey: 'category_id' });
-module.exports = Category;
+
+module.exports = Stock;

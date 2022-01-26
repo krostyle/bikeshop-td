@@ -15,5 +15,5 @@ const Brand = sequelize.define('brand', {
 });
 
 Brand.hasMany(Product, { foreignKey: 'brand_id' });
-
+Product.belongsTo(Brand, { foreignKey: 'brand_id', targetKey: 'brand_id' });
 module.exports = Brand;

@@ -32,6 +32,5 @@ const Store = sequelize.define('store', {
     timestamps: false,
 });
 
-Store.hasOne(Stock, { foreignKey: 'store_id' });
-
+// Store.hasOne(Stock, { foreignKey: 'store_id' });
 module.exports = Store;
