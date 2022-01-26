@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const sequelize = require('../database/database');
+const Brand = require('./Brand');
 const Category = require('./Category');
 const Stock = require('./Stock');
 
@@ -27,6 +28,8 @@ const Product = sequelize.define('product', {
     timestamps: false,
 });
 
-// Product.hasOne(Stock, { foreignKey: 'product_id' });
+
+
+
 
 module.exports = Product;

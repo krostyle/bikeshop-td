@@ -14,6 +14,6 @@ const Brand = sequelize.define('brand', {
     timestamps: false,
 });
 
-Brand.hasMany(Product, { foreignKey: 'brand_id' });
-Product.belongsTo(Brand, { foreignKey: 'brand_id', targetKey: 'brand_id' });
+
+
 module.exports = Brand;
