@@ -1,7 +1,11 @@
 <template>
   <div class="col-12 col-md-3 my-3">
-    <select class="form-select" aria-label="Stores">
-      <option selected>Seleccione una Tienda</option>
+    <select
+      class="form-select"
+      aria-label="Stores"
+      @change="getStoreSelection($event.target.value)"
+    >
+      <option selected :value="0">Seleccione una Tienda</option>
       <option v-for="store in stores" :value="store.store_id">
         {{ store.store_name }}
       </option>
@@ -33,6 +37,9 @@ export default {
         return 0;
       });
       return storesOrdered;
+    },
+    getStoreSelection(store_id) {
+      this.$emit("getStoreId", store_id);
     },
   },
   async created() {

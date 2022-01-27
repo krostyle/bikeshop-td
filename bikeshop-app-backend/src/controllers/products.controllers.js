@@ -8,7 +8,8 @@ const getProducts = async(req, res) => {
                     include: [{
                         model: Store,
                         as: 'store',
-                    }]
+                    }],
+                    required: true
                 },
                 {
                     model: Category,

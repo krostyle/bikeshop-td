@@ -1,7 +1,11 @@
 <template>
   <div class="col-12 col-md-3 my-3">
-    <select class="form-select" aria-label="Categories">
-      <option selected>Seleccione una Categoria</option>
+    <select
+      class="form-select"
+      aria-label="Categories"
+      @change="getCategorySelection($event.target.value)"
+    >
+      <option selected :value="0">Seleccione una Categoria</option>
       <option v-for="category in categories" :value="category.category_id">
         {{ category.category_name }}
       </option>
@@ -33,6 +37,9 @@ export default {
         return 0;
       });
       return categoriesOrdered;
+    },
+    getCategorySelection(category_id) {
+      this.$emit("getCategoryId", category_id);
     },
   },
   async created() {

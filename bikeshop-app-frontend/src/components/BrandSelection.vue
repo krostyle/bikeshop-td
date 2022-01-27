@@ -1,7 +1,11 @@
 <template>
   <div class="col-12 col-md-3 my-3">
-    <select class="form-select" aria-label="Brands">
-      <option selected>Seleccione una Marca</option>
+    <select
+      class="form-select"
+      aria-label="Brands"
+      @change="getBrandSelection($event.target.value)"
+    >
+      <option selected :value="0">Seleccione una Marca</option>
       <option v-for="brand in brands" :value="brand.brand_id">
         {{ brand.brand_name }}
       </option>
@@ -14,6 +18,7 @@ import axios from "axios";
 
 export default {
   name: "BrandSelection",
+
   data() {
     return {
       apiUrl: "http://localhost:3000/api/brands",
@@ -32,8 +37,10 @@ export default {
         }
         return 0;
       });
-
       return brandsOrdered;
+    },
+    getBrandSelection(brand_id) {
+      this.$emit("getBrandId", brand_id);
     },
   },
   async created() {
