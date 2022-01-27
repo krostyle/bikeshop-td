@@ -72,27 +72,20 @@ export default {
           }
           return 0;
         });
+      console.log(productTableOrdered);
       return productTableOrdered;
     },
     //Este metodo se puede optimizar para obtener solo los productos que se necesitan segun el store_id, category_id y brand_id
-    filterProducts(parameters_quantity) {
-      switch (parameters_quantity) {
-        case 1:
-          break;
-        case 2:
-          break;
-        case 3:
-          break;
-        default:
-          this.products = this.staticProducts;
-          break;
-      }
+    filterProducts(store_id, category_id, brand_id) {
+      this.products = this.staticProducts.filter((product) => {
+        return (
+          product.store_id === store_id &&
+          product.category_id === category_id &&
+          product.brand_id === brand_id
+        );
+      });
     },
-    updateTableOneParmeters() {},
-    updateTableTwoParmeters() {},
-    updateTableThreeParmeters() {},
   },
-
   async created() {
     this.staticProducts = await this.getProducts();
     this.products = await this.getProducts();
