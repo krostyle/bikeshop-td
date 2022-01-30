@@ -72,18 +72,65 @@ export default {
           }
           return 0;
         });
-      console.log(productTableOrdered);
       return productTableOrdered;
     },
     //Este metodo se puede optimizar para obtener solo los productos que se necesitan segun el store_id, category_id y brand_id
     filterProducts(store_id, category_id, brand_id) {
-      this.products = this.staticProducts.filter((product) => {
-        return (
-          product.store_id === store_id &&
-          product.category_id === category_id &&
-          product.brand_id === brand_id
-        );
-      });
+      if (store_id && category_id && brand_id) {
+        this.products = this.staticProducts.filter((product) => {
+          return (
+            product.store_id === store_id &&
+            product.category_id === category_id &&
+            product.brand_id === brand_id
+          );
+        });
+      } else {
+        if (store_id && category_id) {
+          this.products = this.staticProducts.filter((product) => {
+            return (
+              product.store_id === store_id &&
+              product.category_id === category_id
+            );
+          });
+        } else {
+          if (store_id && brand_id) {
+            this.products = this.staticProducts.filter((product) => {
+              return (
+                product.store_id === store_id && product.brand_id === brand_id
+              );
+            });
+          } else {
+            if (category_id && brand_id) {
+              this.products = this.staticProducts.filter((product) => {
+                return (
+                  product.category_id === category_id &&
+                  product.brand_id === brand_id
+                );
+              });
+            } else {
+              if (store_id) {
+                this.products = this.staticProducts.filter((product) => {
+                  return product.store_id === store_id;
+                });
+              } else {
+                if (category_id) {
+                  this.products = this.staticProducts.filter((product) => {
+                    return product.category_id === category_id;
+                  });
+                } else {
+                  if (brand_id) {
+                    this.products = this.staticProducts.filter((product) => {
+                      return product.brand_id === brand_id;
+                    });
+                  } else {
+                    this.products = this.staticProducts;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
   },
   async created() {

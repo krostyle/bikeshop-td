@@ -69,7 +69,7 @@ export default {
       this.brand_id = parseInt(value);
     },
     updateTable(store_id, category_id, brand_id) {
-      this.$refs.dataTableComponent.updateTable(
+      this.$refs.dataTableComponent.filterProducts(
         store_id,
         category_id,
         brand_id
